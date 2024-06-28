@@ -1,0 +1,84 @@
+<div
+  class="mt-5"
+  style="
+    width: 90%;
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #1b1f22;
+    padding: 40px 20px;
+    border-radius: 5px;
+  "
+>
+  <form [formGroup]="agregarForm" (ngSubmit)="agregarEditar()">
+    <h3 class="mb-5">{{ titulo }}</h3>
+    <div class="mb-3">
+      <label for="nombre" class="form-label">Nombre</label>
+      <input
+        formControlName="nombre"
+        type="text"
+        class="form-control"
+        id="nombre"
+        placeholder=""
+        autocomplete="off"
+      />
+      <span
+        *ngIf="
+          agregarForm.get('nombre')?.invalid &&
+          agregarForm.get('nombre')?.touched
+        "
+        class="text-danger"
+        ><p>Campo requerido</p></span
+      >
+    </div>
+
+    <div class="mb-3">
+      <label for="apellido" class="form-label">Apellido</label>
+      <input
+        formControlName="apellido"
+        type="text"
+        class="form-control"
+        id="apellido"
+        placeholder=""
+        autocomplete="off"
+      />
+      <span
+        *ngIf="
+          agregarForm.get('apellido')?.invalid &&
+          agregarForm.get('apellido')?.touched
+        "
+        class="text-danger"
+        ><p>Campo requerido</p></span
+      >
+    </div>
+
+    <div class="mb-3 mb-5">
+      <label for="edad" class="form-label">Edad</label>
+      <input
+        formControlName="edad"
+        type="number"
+        class="form-control"
+        id="edad"
+        placeholder=""
+        autocomplete="off"
+      />
+      <span
+        *ngIf="
+          agregarForm.get('edad')?.invalid && agregarForm.get('edad')?.touched
+        "
+        class="text-danger"
+        ><p>Ingrese una edad</p></span
+      >
+    </div>
+
+    <button type="button" routerLink="/" class="btn btn-secondary">
+      Cancelar
+    </button>
+    <button
+      type="submit"
+      [disabled]="agregarForm.invalid"
+      class="btn btn-primary float-end"
+    >
+      Guardar
+    </button>
+  </form>
+</div>
